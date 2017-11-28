@@ -1,29 +1,46 @@
 import React, {Component} from 'react';
-import {Input} from "./components/Input";
-import {Button} from "./components/Button";
-import {TasksList} from "./components/TasksList";
+import {FormInput} from "./components/FormInput";
+import {ItemsList} from "./components/ItemsList";
 
 class App extends Component
 {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            todos: [
+                {
+                    text: 'Do stuff'
+                }
+            ]
+        };
+
+        this.createTask = this.createTask.bind(this);
+    }
+
+    createTask(value) {
+        this.state.todos.push({
+            text: value
+        });
+        this.setState({
+            todos: this.state.todos
+        });
+    }
 
     render() {
         const style = {
             marginTop: '20px'
         };
 
-
         return (
             <div style={style} className="container-fluid">
                 <div className="row">
                     <div className="col-md-4">
-                        <Input/>
-                    </div>
-                    <div className="col-md-2">
-                        <Button/>
+                        <FormInput createTask={this.createTask}/>
                     </div>
                 </div>
 
-                <TasksList/>
+                <ItemsList todos={this.state.todos}/>
             </div>
         );
     }
