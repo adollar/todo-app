@@ -7,12 +7,10 @@ class App extends Component
     constructor(props) {
         super(props);
 
+        const todos = this.props.todos;
+
         this.state = {
-            todos: [
-                {
-                    text: 'Do stuff'
-                }
-            ]
+            todos: todos || []
         };
 
         this.createTask = this.createTask.bind(this);
@@ -22,9 +20,11 @@ class App extends Component
         this.state.todos.push({
             text: value
         });
+
         this.setState({
             todos: this.state.todos
         });
+        localStorage.setItem('todos', JSON.stringify(this.state.todos));
     }
 
     render() {

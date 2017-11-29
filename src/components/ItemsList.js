@@ -9,9 +9,9 @@ export class ItemsList extends Component
     }
 
     render() {
-        const items = this.todos.map((item, index) => {
+        const items = this.todos ? this.todos.map((item, index) => {
             return (<li key={index}>{item.text}</li>)
-        });
+        }) : '';
 
         return (
             <ul className="tasks-list">
