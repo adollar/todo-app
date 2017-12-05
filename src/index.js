@@ -1,9 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 
-const todos = JSON.parse(localStorage.getItem('todos'));
-
-ReactDOM.render(<App todos={todos}/>, document.getElementById('root'));
+ReactDOM.render(
+    <App/>
+    , document.getElementById('root'));
