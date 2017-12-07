@@ -1,11 +1,11 @@
 import * as types from './action-types';
+import {v4} from 'node-uuid';
 
 export function addTodo(text) {
-    console.log('inside action');
     return {
         type: types.ADD_TODO,
         payload: {
-            id: 1,
+            id: v4(),
             text: text
         }
     };

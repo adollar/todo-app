@@ -1,16 +1,7 @@
 import * as types from '../actions/action-types';
 
 const initialState = {
-    todos: [
-        {
-            id: 1,
-            text: 'test1'
-        },
-        {
-            id: 2,
-            text: 'test2'
-        }
-    ]
+    todos: []
 };
 
 const todoReducer = function (state = initialState, action) {
