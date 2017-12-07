@@ -8,12 +8,11 @@ import {addTodo} from '../../actions/todo-actions';
 class FormInputContainer extends Component
 {
     componentDidMount() {
-        console.log(this.props, 'container props');
     }
 
     addItem() {
-        console.log('added');
-        store.dispatch(addTodo('new action'));
+        store.dispatch(addTodo(this.refs.inputText.value));
+        this.refs.inputText.value = '';
     };
 
     handleOnChange() {
@@ -33,12 +32,13 @@ class FormInputContainer extends Component
 }
 
 const mapStateToProps = function (store) {
+    console.log('mapStateToProps');
     return {
         todos: store.todos
     }
 };
 
-const mapDisptchToProps = dispatch => {
+const mapDispatchToProps = dispatch => {
     return {
         addItem: text => {
             dispatch(addTodo(text))
@@ -46,5 +46,5 @@ const mapDisptchToProps = dispatch => {
     }
 };
 
-export default connect(mapStateToProps, mapDisptchToProps)(FormInputContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(FormInputContainer);
 

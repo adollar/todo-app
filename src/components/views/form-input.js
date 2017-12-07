@@ -2,6 +2,10 @@ import React, {Component} from 'react';
 
 export default class FormInput extends Component
 {
+    getInput(){
+        return this.refs.inputText.value
+    } 
+    
     render() {
         return (
             <div className="form-group">
@@ -11,6 +15,7 @@ export default class FormInput extends Component
                             onChange={this.props.handleOnChange}
                             type="email"
                             className="form-control"
+                            ref="inputText"
                             id="todo-task"
                             placeholder="Enter task"
                             autoFocus
@@ -18,7 +23,7 @@ export default class FormInput extends Component
                     </div>
                     <div className="col-md-2">
                         <button
-                            onClick={this.props.addItem}
+                            onClick={this.props.addItem.bind(this)}
                             type="button"
                             className="btn btn-primary">
                             Add
