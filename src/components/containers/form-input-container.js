@@ -15,16 +15,10 @@ class FormInputContainer extends Component
         this.refs.inputText.value = '';
     };
 
-    handleOnChange() {
-    }
-
     render() {
         return (
             <div>
-                <FormInput
-                    handleOnChange={this.handleOnChange}
-                    addItem={this.addItem}
-                />
+                <FormInput addItem={this.addItem}/>
                 <ItemsList todos={this.props.todos}/>
             </div>
         );
