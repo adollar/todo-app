@@ -1,16 +1,15 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-export class ItemsList extends Component
-{
-    render() {
-        const items = this.props.todos ? this.props.todos.map((item, index) => {
-            return (<li key={index}>{item.text}</li>)
-        }) : '';
-
-        return (
-            <ul className="tasks-list">
-                {items}
-            </ul>
-        );
-    }
-}
+export const ItemsList = ({onClick, todos}) =>
+    (
+        <ul className="tasks-list">
+            {todos.map((todo, index) => (
+                    <li
+                        style={{textDecoration: todo.completed ? 'line-through' : 'none'}}
+                        onClick={() => onClick(todo.id)}
+                        key={index}>{todo.text}
+                    </li>
+                )
+            )}
+        </ul>
+    );

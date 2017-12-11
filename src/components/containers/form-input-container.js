@@ -3,7 +3,10 @@ import {connect} from 'react-redux';
 import React, {Component} from 'react';
 import FormInput from '../views/form-input';
 import {ItemsList} from "../views/items-list";
-import {addTodo} from '../../actions/todo-actions';
+import {
+    addTodo,
+    toggleTodo
+} from '../../actions/todo-actions';
 import some from 'lodash/some'
 
 class FormInputContainer extends Component
@@ -21,11 +24,15 @@ class FormInputContainer extends Component
         }
     };
 
+    onItemClick(id) {
+        store.dispatch(toggleTodo(id))
+    }
+
     render() {
         return (
             <div>
                 <FormInput addItem={this.addItem}/>
-                <ItemsList todos={this.props.todos}/>
+                <ItemsList onClick={this.onItemClick} todos={this.props.todos}/>
             </div>
         );
     }
