@@ -1,19 +1,12 @@
+import some from 'lodash/some'
 import store from '../../store';
 import {connect} from 'react-redux';
 import React, {Component} from 'react';
 import FormInput from '../views/form-input';
-import {ItemsList} from "../views/items-list";
-import {
-    addTodo,
-    toggleTodo
-} from '../../actions/todo-actions';
-import some from 'lodash/some'
+import {addTodo} from '../../actions/todo-actions';
 
 class FormInputContainer extends Component
 {
-    componentDidMount() {
-    }
-
     addItem(event) {
         event.preventDefault();
         const tasks = store.getState().todos;
@@ -24,15 +17,10 @@ class FormInputContainer extends Component
         }
     };
 
-    onItemClick(id) {
-        store.dispatch(toggleTodo(id))
-    }
-
     render() {
         return (
             <div>
                 <FormInput addItem={this.addItem}/>
-                <ItemsList onClick={this.onItemClick} todos={this.props.todos}/>
             </div>
         );
     }
@@ -40,7 +28,7 @@ class FormInputContainer extends Component
 
 const mapStateToProps = function (store) {
     return {
-        todos: store.todos
+        todos: store.todoReducer.todos
     }
 };
 
@@ -52,5 +40,8 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(FormInputContainer);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(FormInputContainer);
 

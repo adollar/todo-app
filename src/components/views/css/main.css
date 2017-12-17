@@ -1,0 +1,8 @@
+.Close {
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.TodoItem, .Close {
+    display: inline-block;
+}

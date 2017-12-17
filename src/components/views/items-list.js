@@ -6,8 +6,12 @@ export const ItemsList = ({onClick, todos}) =>
             {todos.map((todo, index) => (
                     <li
                         style={{textDecoration: todo.completed ? 'line-through' : 'none'}}
-                        onClick={() => onClick(todo.id)}
-                        key={index}>{todo.text}
+                        onClick={
+                            () => onClick(todo.id)
+                        }
+                        key={index}
+                    >
+                        {todo.text}
                     </li>
                 )
             )}

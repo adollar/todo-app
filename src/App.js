@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
+import Footer from "./components/views/footer";
+import VisibleTodoList from "./components/containers/visible-todo-list";
 import FormInputContainer from './components/containers/form-input-container'
-import store from './store';
-import {Provider} from 'react-redux';
-
 
 export default class App extends Component
 {
@@ -11,9 +10,9 @@ export default class App extends Component
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-md-8">
-                        <Provider store={store}>
-                            <FormInputContainer/>
-                        </Provider>
+                        <FormInputContainer/>
+                        <VisibleTodoList/>
+                        <Footer/>
                     </div>
                 </div>
             </div>

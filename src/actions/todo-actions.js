@@ -1,7 +1,7 @@
-import * as types from './action-types';
 import {v4} from 'node-uuid';
+import * as types from './action-types';
 
-export function addTodo(text) {
+export const addTodo = (text) => {
     return {
         type: types.ADD_TODO,
         payload: {
@@ -10,7 +10,14 @@ export function addTodo(text) {
             completed: false
         }
     };
-}
+};
+
+export const setVisibilityFilter = filter => {
+    return {
+        type: 'SET_VISIBILITY_FILTER',
+        filter
+    }
+};
 
 export const toggleTodo = id => {
     return {

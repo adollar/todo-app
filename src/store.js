@@ -1,6 +1,15 @@
-import {createStore} from 'redux';
 import todoReducer from './reducers/todo-reducer';
+import {
+    combineReducers,
+    createStore
+} from 'redux';
+import {visibilityFilter} from './reducers/visibility-filter';
 
-const store = createStore(todoReducer);
+const todoApp = combineReducers({
+        todoReducer,
+        visibilityFilter
+    }
+);
+const store = createStore(todoApp);
 
 export default store;
